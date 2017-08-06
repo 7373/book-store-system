@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 默认的视图主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+
+	<constant name="struts.objectFactory" value="spring" />
+
+	<package name="bookshop" namespace="/bookshop" extends="struts-default">
+		<action name="*Action" class="com.bookshop.action.UserAction"
+			method="{1}">
+			<result name="admin">/admin.jsp</result>
+			<result name="register" type="redirect">/Login.jsp</result>
+			<result name="success">/customer.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action>
+		<action name="book_*" class="com.bookshop.action.BookAction"
+			method="{1}">
+			<result name="add">/BookSearch.jsp</result>
+			<result name="list">/book.jsp</result>
+			<result name="search">/guestSearch.jsp</result>
+			<result name="delete" type="redirect">/bookDelete.jsp</result>
+			<result name="update1">/BookUpdate.jsp</result>
+			<result name="update">/BookSearch.jsp</result>
+
+		</action>
+		<action name="order_*" class="com.bookshop.action.CartAction"
+			method="{1}">
+			<result name="addcart">/orderSearch.jsp</result>
+			<result name="cardlist">/orderSearch.jsp</result>
+			<result name="orderlist">/user-order-search.jsp</result>
+			<result name="cardpay">/index.jsp</result>
+			<result name="cartlist">/orderSelect.jsp</result>
+
+			<result name="send">/orderSelect.jsp</result>
+
+		</action>
+	</package>
+
+</struts>
+
